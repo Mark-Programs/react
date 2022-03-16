@@ -12,6 +12,6 @@ To do this:
 
 Then it will activate the formatter (not that there are several to choose from)
 
-.........................................
+..........................................
 
 
