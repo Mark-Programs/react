@@ -1,0 +1,17 @@
+In the course he uses Visual Studio Code.
+
+The extensions are 
+1. Prettier
+2. Material Icon Theme
+
+For Prettier, you have to activate it.
+To do this:
+- open settings
+- search for default formatter
+- Use the scroll down and select "Prettier"
+
+Then it will activate the formatter (not that there are several to choose from)
+
+.........................................
+
+
