@@ -5,6 +5,8 @@ import SearchIcon from './search.svg';
 import MovieCard from './MovieCard.jsx';
 
 const API_URL = `http://www.omdbapi.com?apikey=${apiKey}`;
+// populate search based on current year
+const year = new Date().toISOString().substring(0, 4);
 
 const App = () => {
   const [ movies, setMovies ] = useState([]);
@@ -21,7 +23,7 @@ const App = () => {
     setMovies(data.Search);
   };
   useEffect( () => {
-    searchMovies('Evangelion');
+    searchMovies(year);
   }, []);
 
   return(
