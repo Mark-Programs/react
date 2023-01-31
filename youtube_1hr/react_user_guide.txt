@@ -1,0 +1,13 @@
+npx create-react-app <path or new folder name>
+- ./      -> creates in current directory
+- folderName    -> creates folder named what is entered, and unpacks react data
+
+Intro text generated after React installation:
+  npm start         -Starts the development server.
+  npm run build     -Bundles the app into static files for production.
+  npm test          -Starts the test runner.
+  npm run eject     -Removes this tool and copies build dependencies, configuration files
+                      and scripts into the app directory. If you do this, you can’t go back!
+
+It will state there are vulnerabilities.  If you dive into the 'npm audit fix --force' path, you will be there
+  for a LONG time, because there are tons of updates (as --force pushes to the next major version)

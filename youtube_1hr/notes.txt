@@ -1,0 +1,21 @@
+This React JS application is based off a video on the JavaScript Mastery's YouTube channel.
+Navigate to the video using this address: https://youtu.be/b9eMGE7QtTk
+
+I have tweaked the code and styling just because I could.  I like messing around with stuff.
+This is my very first application using React JS.  Feel free to compare it to their full Movie App code,
+which is listed in the description of the YouTube video.
+
+
+Create React environment
+  Requirements: NodeJS
+  Command: npx create-react-app ./
+
+Intro text generated after React installation:
+  npm start         -Starts the development server.
+  npm run build     -Bundles the app into static files for production.
+  npm test          -Starts the test runner.
+  npm run eject     -Removes this tool and copies build dependencies, configuration files
+                      and scripts into the app directory. If you do this, you can’t go back!
+  
+This will state there are vulnerabilities, but being this is a demo app, it is okay to ignore them.
+
