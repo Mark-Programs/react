@@ -2,6 +2,8 @@ npx create-react-app <path or new folder name>
 - ./      -> creates in current directory
 - folderName    -> creates folder named what is entered, and unpacks react data
 
+REACT DOCUMENTATION: https://reactjs.org/docs/getting-started.html
+
 Intro text generated after React installation:
   npm start         -Starts the development server.
   npm run build     -Bundles the app into static files for production.
@@ -11,3 +13,151 @@ Intro text generated after React installation:
 
 It will state there are vulnerabilities.  If you dive into the 'npm audit fix --force' path, you will be there
   for a LONG time, because there are tons of updates (as --force pushes to the next major version)
+
+Basic app.js file that renders data to the screen
+      import './App.css';
+
+      // This is a 'Person' component that renders JSX, props is like arguments for the component
+      const Person = (props) => {
+        return (
+          {/* Must wrap in a 'fragment', All data must be enclosed in the same block (ie: empty tag) */}
+          <>
+            <h1>Name: {props.first}</h1>
+            <h2>Last: {props.last}</h2>
+            <h2>Age: {props.age}</h2>
+          </> 
+        )};
+
+      const App = () => {
+        const items = [ {/*  Define an array of objects*/}
+          {first: "John", last: "Doe", age: 25},
+          {first: "Jane", last: "Donne", age: 30},
+          {first: "Jimmy", last: "Doey", age: 32},
+        ]
+        return (
+          <div className="App">
+            <>
+              <p>Hello, React</p>
+              {items.map(e => (
+                <> 
+                  <Person first={e.first} last={e.last} age={e.age} />
+                </>
+                ))}
+            </>
+          </div>
+        );
+      }
+      export default App;
+-------------------------------------------
+NOTE: Using 'props' prevents from having to manually type things out for each line, for instance:
+    {/* <Person first="John" last="Doe" age= 25/> 
+    {/* <Person first="Jane" last="Donne" age=30 /> 
+    {/* <Person first="Jimmy" last="Doey" age=32 /> 
+
+STATES
+1. Import the state hook:   import { useState } from 'react';
+    import { useState } = require('react');
+  
+2. call the data required
+  // using states example: a counter (anything with 'use' in front is aka "HOOK")
+  // below is 'array destructuring'
+  // counter: name of the state, setCounter: a setter function, useState is provided INITIAL variable
+  const [counter, setCounter] = useState(0);
+  
+  return (
+    <div className="App">
+      {/*  The prevCount is just a parameter, can call whatever. PREV stands for 'previous'  */}
+      <p><button onClick={() => setCounter((prevCount) => prevCount - 1)}>-</button>   <button onClick={() => setCounter((prevCount) => prevCount + 1)}>+</button></p>
+      <h1>{counter}</h1>
+    </div>
+  );
+
+EFFECTS
+useEffect allows us to do something on some kind of effect (or some kind of event)
+It is called before the 'return', so it always takes place before the data makes it on the page
+
+RULE #1, never change a react state.  States can only be changed using its own setter function 
+IE:   
+      const App = () => {
+        const [counter, setCounter] = useState(0);
+        
+      useEffect( () => {
+        counter = 100;  // DO NOT DO THIS!  ONLY LET THE SETCOUNTER ALTER COUNTER
+      })
+
+** INSTEAD DO THIS:
+      useEffect( () => {
+        setCounter(100);
+      }, [])  // <- the [] is aka "dependency array", tells it to ONLY SET IT at the START (initial component load)
+      // will set the value at 100, but then allow the program to mutate it as it runs
+
+Can also use it to call other code:
+  Instead of calling an alert, you can do other things, this is merely an example:
+
+      useEffect( () => {
+        alert(`You've chanced the count to {counter}`)
+      }, [counter])  // <- this will alert you every time the counter changes (or call other code)
+
+
+Creating INDEX.JS
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import App from './app';
+
+  ReactDOM.render(<App />, document.getElementById('root'))
+  ----
+  NOTE: the App component is called to be rendered 
+          the getElementById is listed as root.  triggers a div with the id="root"
+          injects the entire application inside of root
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+CREATING AN EXTERNAL API KEY FOR THIS PROJECT (from the 'Open Movie Database')
+  Navigate to 46:12 in the video to see how to create the API key for this app
+  https://youtu.be/b9eMGE7QtTk?t=2770 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  NOTE: to prevent others from using my API key, I included my apiKey variable in a 
+          different JS file, and added that path to .gitignore
+        You can do the same on yours, or just keep your repo private and not have
+          to worry
+
+App.js / / / / / / / / / / / / / / / / / / / / / / / 
+  import { useEffect } from 'react';
+  import apiKey from './apikey';
+
+  const API_URL = `http://www.omdbapi.com?apikey=${apiKey}`;
+
+  const App = () => {
+    const searchMovies = async (title) => {
+      const response = await fetch(`${API_URL}&s=${title}`);
+      const data = await response.json();
+      console.log(data);
+    };
+    useEffect( () => {
+      searchMovies('Evangelion');
+    }, []);
+
+    return(
+      <h1>App</h1>
+    );
+  }
+
+  export default App;
+
+---- Calling the searchMovies function the useEffect will submit
+      the search, and return the search in a huge object
+    To truly see the data, console log data.Search (an array within the object) instead of just "data"
+    This returns an array of obejcts wth all the data
+
+From his GIT Repo, download the css stylesheet and the search.svg file
+  The 'search.svg' is pretty much just a search ICON
+
+
+
+
+
+
+
+
+
+
