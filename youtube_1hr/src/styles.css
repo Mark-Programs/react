@@ -14,7 +14,7 @@
 
 body {
   font-family: var(--font-roboto);
-  background-color: #212426;
+  background-color: #363c42;
 }
 
 .app {
@@ -31,8 +31,8 @@ h1 {
   letter-spacing: 0.9px;
   background: linear-gradient(
     90deg,
-    rgba(249, 211, 180, 1) 0%,
-    rgba(249, 211, 180, 0) 100%
+    rgb(230, 225, 222) 0%,
+    rgba(35, 111, 209, 0) 120%
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -154,7 +154,7 @@ h1 {
 
 .movie div:nth-of-type(3) {
   z-index: 2;
-  background-color: #343739;
+  background-color: #1b1c1d;
   padding: 16px 24px 24px 24px;
 
   position: absolute;

@@ -152,8 +152,59 @@ App.js / / / / / / / / / / / / / / / / / / / / / / /
 From his GIT Repo, download the css stylesheet and the search.svg file
   The 'search.svg' is pretty much just a search ICON
 
+Side note: If you continue to receive errors in your browser's console
+    inspector, then refresh the page, this should resolve fixed errors
+
+To get fixed data from a movie, pick one and save it as its own object, ie:
+const movie1 = {
+  "Title": "Neon Genesis Evangelion",
+  "Year": "1995–1996",
+  "imdbID": "tt0112159",
+  "Type": "series",
+  "Poster": "https://m.media-amazon.com/images/M/MV5BODZkZjUxNmEtMGEyOS00ZDY5LTkxZDMtZTJkZDBiZTkyOWRkXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg"
+}
+
+Then under 'return()' in App, add:
+    <div className='app'>
+      <h1>MovieQuest</h1>
+      <div className='search'>
+        <input 
+          placeholder='Search for movies...'
+          value='Evangelion'
+          onChange={() => {}}
+        />
+        <img 
+          src={SearchIcon}
+          alt='search'
+          onClick={() => {}}
+        />
+
+      </div>
+      <div className='container'>
+        <div className='movie'>
+          <div>
+            <p>{movie1.Year}</p>
+          </div>
+          <div>
+            <img src={movie1.Poster !== 'N/A' ? movie1.Poster : 'https://via.placeholder.com/400'} alt={movie1.Title} />
+          </div>
+          <div>
+            <span>{movie1.Type}</span>
+            <h3>{movie1.Title}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
+This will render ONE movie on the screen.
+
+To create a movie tile for ALL return objects, we will need to create an component to
+  generate this code from every movie.
+
+1. in the ./src folder, create the file: MovieCard.JSX
+  Use a .jsx ext to help you visually know it is a component, and not something else
+  NOTE: the file name and component should match, just for easy reference (not req'd)
 
 
 
